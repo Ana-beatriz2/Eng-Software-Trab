@@ -6,13 +6,13 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = UsuarioAdministrador.TABLE_NAME)
-public class UsuarioAdministrador {
-    public static final String TABLE_NAME = "usuarioAdministrador";
+@Table(name = UsuarioCliente.TABLE_NAME)
+public class UsuarioCliente {
+    public static final String TABLE_NAME = "usuarioCliente";
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // estratégia para gerar o numero no bd. Como o Autoincrements
-    @Column(name = "id", unique = true) // não precisava por o id aqui também, foi feito só por precaução
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true)
     private Long id;
 
     @Column(name = "nome", length = 100, nullable = false, unique = true)
@@ -37,15 +37,19 @@ public class UsuarioAdministrador {
     @Column(name = "cnpj", nullable = true, unique = true)
     private String cnpj; //se não tiver, é pessoa física
 
-    @Column(name = "ctps", nullable = false, unique = true)
-    private String ctps;
+    @Column(name = "pontosProgFidelidade")
+    private int pontosProgFidelidade;
 
-    @Column(name = "statusGerente", nullable = false)
-    private int statusGerente;
+    @Column(name = "statusMotorista", nullable = false)
+    private int statusMotorista;
 
-    public UsuarioAdministrador() {
+
+    // private List<Motorista> motoristas = new ArrayList<Motorista>();
+
+
+    public UsuarioCliente() {
     }
-    public UsuarioAdministrador(Long id, String nome, String email, String senha, String cpf, String dtNascimento, String endereco, String cnpj, String ctps, int statusGerente) {
+    public UsuarioCliente(Long id, String nome, String email, String senha, String cpf, String dtNascimento, String endereco, String cnpj, int pontosProgFidelidade, int statusMotorista) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -54,8 +58,8 @@ public class UsuarioAdministrador {
         this.dtNascimento = dtNascimento;
         this.endereco = endereco;
         this.cnpj = cnpj;
-        this.ctps = ctps;
-        this.statusGerente = statusGerente;
+        this.pontosProgFidelidade = pontosProgFidelidade;
+        this.statusMotorista = statusMotorista;
     }
 
     public Long getId() {
@@ -122,28 +126,28 @@ public class UsuarioAdministrador {
         this.cnpj = cnpj;
     }
 
-    public String getCtps() {
-        return ctps;
+    public int getPontosProgFidelidade() {
+        return pontosProgFidelidade;
     }
 
-    public void setCtps(String ctps) {
-        this.ctps = ctps;
+    public void setPontosProgFidelidade(int pontosProgFidelidade) {
+        this.pontosProgFidelidade = pontosProgFidelidade;
     }
 
-    public int getStatusGerente() {
-        return statusGerente;
+    public int getStatusMotorista() {
+        return statusMotorista;
     }
 
-    public void setStatusGerente(int statusGerente) {
-        this.statusGerente = statusGerente;
+    public void setStatusMotorista(int statusMotorista) {
+        this.statusMotorista = statusMotorista;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        UsuarioAdministrador that = (UsuarioAdministrador) obj;
-        return statusGerente == that.statusGerente && Objects.equals(id, that.id) && Objects.equals(nome, that.nome) && Objects.equals(email, that.email) && Objects.equals(senha, that.senha) && Objects.equals(cpf, that.cpf) && Objects.equals(dtNascimento, that.dtNascimento) && Objects.equals(endereco, that.endereco) && Objects.equals(cnpj, that.cnpj) && Objects.equals(ctps, that.ctps);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UsuarioCliente that = (UsuarioCliente) o;
+        return pontosProgFidelidade == that.pontosProgFidelidade && statusMotorista == that.statusMotorista && Objects.equals(id, that.id) && Objects.equals(nome, that.nome) && Objects.equals(email, that.email) && Objects.equals(senha, that.senha) && Objects.equals(cpf, that.cpf) && Objects.equals(dtNascimento, that.dtNascimento) && Objects.equals(endereco, that.endereco) && Objects.equals(cnpj, that.cnpj);
     }
 
     @Override
