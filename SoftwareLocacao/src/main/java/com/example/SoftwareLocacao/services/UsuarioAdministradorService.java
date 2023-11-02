@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 public class UsuarioAdministradorService {
 
@@ -15,7 +17,7 @@ public class UsuarioAdministradorService {
     public UsuarioAdministrador findById(Long id){
         Optional<UsuarioAdministrador> usuarioAdministrador = this.usuarioAdmRepository.findById(id);
         return usuarioAdministrador.orElseThrow( () -> new RuntimeException(
-           "Usuário não encontrado! id: " + id + ", Tipo: " + UsuarioAdministrador.class.getNome()
+           "Usuário não encontrado! id: " + id + ", Tipo: " + UsuarioAdministrador.class.getName()
         ));
     }
 
