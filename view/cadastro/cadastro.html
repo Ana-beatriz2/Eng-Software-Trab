@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv= "X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Você Aluga</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-image"></div>
+    <div class="filter-blur"></div>
+    <div class="login-container">
+        <p class="sign-up"> Criar Cadastro</p>
+        <form id="register-form">
+            <div class="full-box">
+                <label for="register-form">Nome completo</label>
+                <input placeholder="Digite o seu nome completo" type="text" name="Nome Completo" id="nome-completo">
+            </div>
+            <div class="half-box">
+                <label for="register-form">Tipo de Pessoa</label>
+                <input type="radio" name="typeperson" id="pessoa-fisica">
+                <input type="radio" name="typeperson" id="pessoa-juridica"> Pessoa Jurídica
+            </div>
+            <div class="full-box">
+                <label for="register-form">E-mail</label>
+                <input placeholder="Digite o seu e-mail" type="email" id="e-mail">
+            </div>
+            <div class="half-box">
+                <label for="register-form">Data de Nascimento</label>
+                <input placeholder="DD/MM/AAAA" type="date" name="Data de Nascimento" id="data-de-nascimento">
+            </div>
+            <div class="half-box">
+                <label for="register-form">CPF</label>
+                <input placeholder="Digite seu CPF" type="text" name="CPF" id="cpf">
+            </div>
+            <div class="half-box">
+                <label for="register-form">CNPJ</label>
+                <input placeholder="Digite seu CNPJ" type="text" name="CNPJ" id="cnpj">
+            </div>
+            <div class="half-box">
+                <label for="register-form">Telefone</label>
+                <input placeholder="Digite seu Telefone" type="text" name="Telefone" id="telefone">
+            </div>
+            <div class="half-box">
+                <label for="register-form">Senha</label>
+                <input placeholder="Digite a sua senha" type="password" name="password" id="password">
+            </div>
+            <div class="half-box">
+                <label for="register-form">RENAVAM</label>
+                <input placeholder="Digite o seu RENAVAM" type="text" name="renavam" id="renavam">
+            </div>
+            <div class="half-box">
+                <label for="register-form">CTPS</label>
+                <input placeholder="Digite o seu CTPS" type="text" name="CTPS" id="ctps">
+            </div>
+            <div class="half-box">
+                <label for="register-form">ADS</label>
+                <input placeholder="Digite o seu ADS" type="text" name="ADS" id="ads">
+            </div>
+        </form>
+        <button>Enviar</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
