@@ -31,7 +31,7 @@ public class UsuarioAdministradorService {
      public UsuarioAdministrador update(UsuarioAdministrador obj) {
         UsuarioAdministrador newObj = findById(obj.getId());
         newObj.setNome(obj.getNome());
-        newObj.setEmail(obj.getNome());
+        newObj.setEmail(obj.getEmail());
         newObj.setSenha(obj.getSenha());
         newObj.setCpf(obj.getCpf());
         newObj.setDtNascimento(obj.getDtNascimento());
