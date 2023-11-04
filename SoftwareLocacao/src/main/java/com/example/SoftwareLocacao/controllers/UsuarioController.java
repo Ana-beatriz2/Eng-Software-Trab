@@ -37,16 +37,28 @@ public class UsuarioController{
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> updateUsuario(@RequestBody UsuarioAdministrador obj, @PathVariable Long id){
+    public ResponseEntity<String> updateUsuario(@RequestBody UsuarioAdministrador obj, @PathVariable Long id){
         obj.setId(id);
-        this.usuarioAdministradorService.update(obj);
-        return ResponseEntity.noContent().build();
+        try{
+            this.usuarioAdministradorService.update(obj);
+            return ResponseEntity.noContent().build();
+        } catch(Exception ex){
+            String errorMessage = "Erro ao atualizar usuário administrador: " + ex.getMessage();
+            return ResponseEntity.badRequest().body(errorMessage);
+        }
+
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUsuario(@PathVariable Long id){
-        this.usuarioAdministradorService.delete(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<String> deleteUsuario(@PathVariable Long id){
+        try{
+            this.usuarioAdministradorService.delete(id);
+            return ResponseEntity.noContent().build();
+        } catch(Exception ex){
+            String errorMessage = "Erro ao deletar usuário administrador: " + ex.getMessage();
+            return ResponseEntity.badRequest().body(errorMessage);
+        }
+
     }
 
 }
