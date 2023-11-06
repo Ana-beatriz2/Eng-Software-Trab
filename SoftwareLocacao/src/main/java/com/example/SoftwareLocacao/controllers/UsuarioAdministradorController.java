@@ -12,7 +12,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("/usuarioAdministrador") //rota da controller
-public class UsuarioController{
+public class UsuarioAdministradorController {
 
     @Autowired
     private UsuarioAdministradorService usuarioAdministradorService;

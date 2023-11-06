@@ -43,10 +43,6 @@ public class UsuarioCliente {
     @Column(name = "statusMotorista", nullable = false)
     private int statusMotorista;
 
-
-    // private List<Motorista> motoristas = new ArrayList<Motorista>();
-
-
     public UsuarioCliente() {
     }
     public UsuarioCliente(Long id, String nome, String email, String senha, String cpf, String dtNascimento, String endereco, String cnpj, int pontosProgFidelidade, int statusMotorista) {
