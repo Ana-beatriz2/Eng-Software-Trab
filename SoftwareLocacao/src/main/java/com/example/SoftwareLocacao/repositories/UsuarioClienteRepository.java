@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface UsuarioClienteRepository extends JpaRepository<UsuarioCliente, Long> {
-
+    
+    UsuarioCliente findByNome(String nome);
 
 }

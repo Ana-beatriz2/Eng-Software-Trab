@@ -21,6 +21,13 @@ public class UsuarioClienteService {
         ));
     }
 
+    public UsuarioCliente findClienteByName(String name){
+        Optional<UsuarioCliente> usuarioCliente = Optional.ofNullable(this.usuarioClienteRepository.findByNome(name));
+        return usuarioCliente.orElseThrow( () -> new RuntimeException(
+                "Usuário não encontrado! Nome: " + name + ", Tipo: " + UsuarioCliente.class.getName()
+        ));
+    }
+
     @Transactional //usa quando vai salvar algo no banco
     public UsuarioCliente create(UsuarioCliente obj){
         obj.setId(null);
