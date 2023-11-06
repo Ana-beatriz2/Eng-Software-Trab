@@ -24,6 +24,7 @@ public class UsuarioClienteService {
     @Transactional //usa quando vai salvar algo no banco
     public UsuarioCliente create(UsuarioCliente obj){
         obj.setId(null);
+        obj.setPontosProgFidelidade(0);
         obj = this.usuarioClienteRepository.save(obj);
         return obj;
     }
