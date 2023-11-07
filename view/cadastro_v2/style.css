@@ -1,14 +1,14 @@
 body {
     height: 100vh;
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
     text-align: center;
 }
 
 h2 {
-    color: #333;
+    color: #000000;
     margin-top: 0px;
     padding-top: 2rem;
 }
@@ -16,7 +16,7 @@ h2 {
 label {
     display: block;
     margin-top: 10px;
-    color: #333;
+    color: #ffffff;
 }
 
 input[type="text"],
@@ -74,7 +74,7 @@ input[type="submit"]:hover {
     width: 400px;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid rgb(255, 255, 255)fff;
     border-radius: 5px;
     z-index: 1;
 }
