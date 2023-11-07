@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Registro de Cliente</title>
+</head>
+<body>
+    <div class="bg-image"></div>
+    <div class="filter-blur"></div>
+    <h2>Registro de Motorista</h2>
+    <form id="registro-form">
+        <input type="radio" name="tipo_cliente" value="pessoa_fisica" id="pf_radio" checked> Pessoa Física
+        <input type="radio" name="tipo_cliente" value="pessoa_juridica" id="pj_radio"> Pessoa Jurídica
+        <!-- Campos para Pessoa Física -->
+        <div id="pessoa_fisica_fields">
+            <label for="nome_completo">Nome Completo:</label>
+            <input type="text" name="nome_completo" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" required><br>
+
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" required><br>
+
+            <label for="data_nascimento">Data de Nascimento:</label>
+            <input type="date" name="data_nascimento" required><br>
+
+            <label for="cpf">CPF:</label>
+            <input type="text" name="cpf" required><br>
+        </div>
+        <!-- Campos para Pessoa Jurídica -->
+        <div id="pessoa_juridica_fields" style="display: none;">
+            <label for="razao_social">Razão Social:</label>
+            <input type="text" name="razao_social" required><br>
+
+            <label for="cnpj">CNPJ:</label>
+            <input type="text" name="cnpj" required><br>
+        </div>
+
+        <label for="telefone">Telefone:</label>
+        <input type="tel" name="telefone" required><br>
+
+        <label for="renavam">RENAVAM:</label>
+        <input type="text" name="renavam" required><br>
+
+        <label for="ctps">CTPS:</label>
+        <input type="text" name="ctps" required><br>
+
+        <label for="ads">ADS:</label>
+        <input type="text" name="ads" required><br>
+
+        <input type="submit" value="Registrar">
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>

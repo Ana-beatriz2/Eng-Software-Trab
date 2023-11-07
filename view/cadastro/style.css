@@ -7,10 +7,11 @@ body{
     align-items: center;
     justify-content: center;
     height: auto;
+    box-sizing: border-box;
     z-index: 0;
 }
 .bg-image {
-    background-image: url("car.jpg");
+    background-image: url("../resources/img/car.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -28,9 +29,9 @@ body{
     height: 100%;
     z-index: 2;
 }
-.login-container{
+.registration-container{
     background-color: rgb(35,67,114);
-    padding: 2.5rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
@@ -38,24 +39,28 @@ body{
     color: #ffffff;
     align-items: center;
     z-index: 3;
+    width: 35rem;
 }
 .half-box{
-    width: 156px;
-    height: 82px;
-    display: block;
+    width: 196px;
+    display: flex;
+    flex-direction: column;
     align-self: center;
     margin-bottom: 30px;
+    padding: 2rem;
+    gap: 0.5rem;
 }
 .full-box{
-    width: 156px;
-    height: 82px;
-    display: block;
+    width: 312px;
+    display: flex;
+    flex-direction: column;
     align-self: center;
     margin-bottom: 30px;
+    padding: 2rem;
+    gap: 0.5rem;
 }
-input{
-    height: 32px;
-    width: 196px;
+.full-box input{
+    width: 424px;
     border-radius: 10px;
     padding-inline-start: 8px;
     padding-inline-end: 8px;
@@ -68,15 +73,31 @@ button{
     display: block;
     margin-bottom: 15px;
 }
-.requirements{
-    align-self: center;
-    display: flex;
-    font-size: 1rem;
-    margin: 0;
-    box-sizing: initial;
-}
 .sign-up{
     align-self: center;
     margin: 0;
     font-size: 32px;
+}
+.row{
+    display:flex;
+    flex-direction: row;
+}
+.person-type{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin-bottom: 1rem;
+}
+.radio-input-container{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+.text-input{
+    height: 32px;
+    width: 196px;
+    border-radius: 10px;
+    padding-inline-start: 8px;
+    padding-inline-end: 8px;
 }

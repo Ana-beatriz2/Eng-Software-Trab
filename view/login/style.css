@@ -10,7 +10,7 @@ body{
     z-index: 0;
 }
 .bg-image {
-    background-image: url("car.jpg");
+    background-image: url("../resources/img/car.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
