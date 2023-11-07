@@ -46,7 +46,6 @@ public class UsuarioClienteService {
         newObj.setEndereco(obj.getEndereco());
         newObj.setCnpj(obj.getCnpj());
         newObj.setPontosProgFidelidade(obj.getPontosProgFidelidade());
-        newObj.setStatusMotorista(obj.getStatusMotorista());
         return this.usuarioClienteRepository.save(newObj);
     }
 
