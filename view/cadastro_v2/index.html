@@ -9,8 +9,6 @@
     <div class="filter-blur"></div>
     <h2>Registro de Motorista</h2>
     <form id="registro-form">
-        <input type="radio" name="tipo_cliente" value="pessoa_fisica" id="pf_radio" checked> Pessoa Física
-        <input type="radio" name="tipo_cliente" value="pessoa_juridica" id="pj_radio"> Pessoa Jurídica
         <!-- Campos para Pessoa Física -->
         <div id="pessoa_fisica_fields">
             <label for="nome_completo">Nome Completo:</label>
@@ -35,22 +33,14 @@
 
             <label for="cnpj">CNPJ:</label>
             <input type="text" name="cnpj" required><br>
-        </div>
-
-        <label for="telefone">Telefone:</label>
-        <input type="tel" name="telefone" required><br>
-
+        </div> 
         <label for="renavam">RENAVAM:</label>
         <input type="text" name="renavam" required><br>
-
-        <label for="ctps">CTPS:</label>
-        <input type="text" name="ctps" required><br>
 
         <label for="ads">ADS:</label>
         <input type="text" name="ads" required><br>
 
         <input type="submit" value="Registrar">
     </form>
-    <script src="script.js"></script>
 </body>
 </html>
