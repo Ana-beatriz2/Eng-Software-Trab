@@ -17,12 +17,14 @@ body{
     background-position: center;
     height: 200%;
     width: 100%;
+    -webkit-backdrop-filter: blur(15px); /* Add prefix for Safari */
     backdrop-filter: blur(15px);
     position: fixed;
     z-index: 1;
 }
 .filter-blur{
     background: rgba(255, 255, 255, 0.5);
+    -webkit-backdrop-filter: blur(15px); 
     backdrop-filter: blur(5px);
     position: fixed;
     width: 100%;
