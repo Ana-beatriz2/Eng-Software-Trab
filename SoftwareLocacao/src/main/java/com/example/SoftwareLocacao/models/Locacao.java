@@ -20,31 +20,31 @@ public class Locacao {
     @Column(name = "dataHoraRetirada")
     private String dataHoraRetirada;
 
-    @Column(name = "retirada", length = 100, nullable = false, unique = true) //filial retirada (real)
+    @Column(name = "retirada", length = 100, nullable = true, unique = true) //filial retirada (real)
     private String retirada;
 
     @Column(name = "carro", nullable = false, unique = true)
     private String carro;
 
     @OneToOne
-    @JoinColumn(nullable = true, unique = true)
+    @JoinColumn(name = "motorista_id", nullable = true, unique = true)
     private Motorista motorista;
 
     @ManyToOne
-    @JoinColumn(nullable = false) //unique = false (é o padrão)
+    @JoinColumn(name = "usuario_id", nullable = false) //unique = false (é o padrão)
     private UsuarioCliente usuario;
 
     public Locacao() {
     }
 
-    public Locacao(Long id, String dataHoraDevolucao, String dataHoraRetirada, String retirada, String carro, Motorista motorista, UsuarioCliente usuario) {
+    public Locacao(Long id, String dataHoraDevolucao, String dataHoraRetirada, String retirada, String carro, UsuarioCliente usuario, Motorista motorista) {
         this.id = id;
         this.dataHoraDevolucao = dataHoraDevolucao;
         this.dataHoraRetirada = dataHoraRetirada;
         this.retirada = retirada;
         this.carro = carro;
-        this.motorista = motorista;
         this.usuario = usuario;
+        this.motorista = motorista;
     }
     public Long getId() { return id; }
 
