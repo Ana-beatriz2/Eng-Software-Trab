@@ -40,13 +40,6 @@ public class UsuarioCliente {
     @Column(name = "pontosProgFidelidade")
     private int pontosProgFidelidade;
 
-    @Column(name = "statusMotorista", nullable = false)
-    private int statusMotorista;
-
-
-    // private List<Motorista> motoristas = new ArrayList<Motorista>();
-
-
     public UsuarioCliente() {
     }
     public UsuarioCliente(Long id, String nome, String email, String senha, String cpf, String dtNascimento, String endereco, String cnpj, int pontosProgFidelidade, int statusMotorista) {
@@ -59,7 +52,7 @@ public class UsuarioCliente {
         this.endereco = endereco;
         this.cnpj = cnpj;
         this.pontosProgFidelidade = pontosProgFidelidade;
-        this.statusMotorista = statusMotorista;
+
     }
 
     public Long getId() {
@@ -133,21 +126,12 @@ public class UsuarioCliente {
     public void setPontosProgFidelidade(int pontosProgFidelidade) {
         this.pontosProgFidelidade = pontosProgFidelidade;
     }
-
-    public int getStatusMotorista() {
-        return statusMotorista;
-    }
-
-    public void setStatusMotorista(int statusMotorista) {
-        this.statusMotorista = statusMotorista;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UsuarioCliente that = (UsuarioCliente) o;
-        return pontosProgFidelidade == that.pontosProgFidelidade && statusMotorista == that.statusMotorista && Objects.equals(id, that.id) && Objects.equals(nome, that.nome) && Objects.equals(email, that.email) && Objects.equals(senha, that.senha) && Objects.equals(cpf, that.cpf) && Objects.equals(dtNascimento, that.dtNascimento) && Objects.equals(endereco, that.endereco) && Objects.equals(cnpj, that.cnpj);
+        return pontosProgFidelidade == that.pontosProgFidelidade && Objects.equals(id, that.id) && Objects.equals(nome, that.nome) && Objects.equals(email, that.email) && Objects.equals(senha, that.senha) && Objects.equals(cpf, that.cpf) && Objects.equals(dtNascimento, that.dtNascimento) && Objects.equals(endereco, that.endereco) && Objects.equals(cnpj, that.cnpj);
     }
 
     @Override
