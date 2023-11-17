@@ -21,14 +21,19 @@ public class Devolucao{
     @Column(name = "estadoVeiculo", nullable = true)
     private String estadoVeiculo;
 
+    @OneToOne
+    @JoinColumn(name = "locacao_id", nullable = true, unique = true)
+    private Locacao locacao;
+
     public Devolucao(){
     }
 
-    public Devolucao(Long id, String dataHoraDevolucao, int quilometragemDevolucao, String estadoVeiculo){
+    public Devolucao(Long id, String dataHoraDevolucao, int quilometragemDevolucao, String estadoVeiculo, Locacao locacao){
         this.id = id;
         this.dataHoraDevolucao = dataHoraDevolucao;
         this.quilometragemDevolucao = quilometragemDevolucao;
         this.estadoVeiculo = estadoVeiculo;
+        this.locacao = locacao;
     }
     public Long getId() { return id; }
 
@@ -46,4 +51,11 @@ public class Devolucao{
 
     public void setEstadoVeiculo(String estadoVeiculo) { this.estadoVeiculo = estadoVeiculo; }
 
+    public Locacao getLocacao() {
+        return locacao;
+    }
+
+    public void setLocacao(Locacao locacao) {
+        this.locacao = locacao;
+    }
 }

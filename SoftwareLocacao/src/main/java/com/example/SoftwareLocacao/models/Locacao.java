@@ -20,31 +20,43 @@ public class Locacao {
     @Column(name = "dataHoraRetirada")
     private String dataHoraRetirada;
 
-    @Column(name = "retirada", length = 100, nullable = true, unique = true) //filial retirada (real)
+    @Column(name = "retirada", length = 100, nullable = true) //filial retirada (real)
     private String retirada;
 
-    @Column(name = "carro", nullable = false, unique = true)
-    private String carro;
-
     @OneToOne
-    @JoinColumn(name = "motorista_id", nullable = true, unique = true)
+    @JoinColumn(name = "motoristaId", nullable = true, unique = true)
     private Motorista motorista;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id", nullable = false) //unique = false (é o padrão)
+    @JoinColumn(name = "usuarioId", nullable = false) //unique = false (é o padrão)
     private UsuarioCliente usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "carroId", nullable = false)
+    private Carro carroReservado;
+
+    @ManyToOne
+    @JoinColumn(name = "filialEntrega", nullable = false)
+    private Filial filialDeEntrega;
+
+    @ManyToOne
+    @JoinColumn(name = "filialRetirada", nullable = false)
+    private Filial filialDeRetirada;
 
     public Locacao() {
     }
 
-    public Locacao(Long id, String dataHoraDevolucao, String dataHoraRetirada, String retirada, String carro, UsuarioCliente usuario, Motorista motorista) {
+    public Locacao(Long id, String dataHoraDevolucao, String dataHoraRetirada, String retirada, UsuarioCliente usuario, Motorista motorista, Carro carroReservado,
+                   Filial filialDeEntrega, Filial filialDeRetirada) {
         this.id = id;
         this.dataHoraDevolucao = dataHoraDevolucao;
         this.dataHoraRetirada = dataHoraRetirada;
         this.retirada = retirada;
-        this.carro = carro;
         this.usuario = usuario;
         this.motorista = motorista;
+        this.carroReservado = carroReservado;
+        this.filialDeEntrega = filialDeEntrega;
+        this.filialDeRetirada = filialDeRetirada;
     }
     public Long getId() { return id; }
 
@@ -61,11 +73,6 @@ public class Locacao {
     public String getRetirada() { return retirada; }
 
     public void setRetirada(String retirada) { this.retirada = retirada; }
-
-    public String getCarro() { return carro; }
-
-    public void setCarro(String carro) { this.carro = carro; }
-
     public Motorista getMotorista() {
         return motorista;
     }
@@ -79,5 +86,29 @@ public class Locacao {
 
     public void setUsuario(UsuarioCliente usuario) {
         this.usuario = usuario;
+    }
+
+    public Carro getCarroReservado() {
+        return carroReservado;
+    }
+
+    public void setCarroReservado(Carro carroReservado) {
+        this.carroReservado = carroReservado;
+    }
+
+    public Filial getFilialDeEntrega() {
+        return filialDeEntrega;
+    }
+
+    public void setFilialDeEntrega(Filial filialDeEntrega) {
+        this.filialDeEntrega = filialDeEntrega;
+    }
+
+    public Filial getFilialDeRetirada() {
+        return filialDeRetirada;
+    }
+
+    public void setFilialDeRetirada(Filial filialDeRetirada) {
+        this.filialDeRetirada = filialDeRetirada;
     }
 }

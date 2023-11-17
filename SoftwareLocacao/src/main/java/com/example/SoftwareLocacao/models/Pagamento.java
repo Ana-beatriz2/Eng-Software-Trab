@@ -30,10 +30,14 @@ public class Pagamento {
     @Column(name = "tipo", nullable = true)
     private String tipo;
 
+    @ManyToOne
+    @JoinColumn(name = "locacao_id", nullable = false)
+    private Locacao locacao;
+
     public Pagamento(){
     }
 
-    public Pagamento(Long id, int valor, int numBanco, String data, String status, String descricao, String tipo){
+    public Pagamento(Long id, int valor, int numBanco, String data, String status, String descricao, String tipo, Locacao locacao){
         this.id = id;
         this.valor = valor;
         this.numBanco = numBanco;
@@ -41,6 +45,7 @@ public class Pagamento {
         this.status = status;
         this.descricao = descricao;
         this.tipo = tipo;
+        this.locacao = locacao;
     }
 
     public Long getId() { return id; }
@@ -70,4 +75,12 @@ public class Pagamento {
     public String getTipo() { return tipo; }
 
     public void setTipo(String tipo) { this.tipo = tipo; }
+
+    public Locacao getLocacao() {
+        return locacao;
+    }
+
+    public void setLocacao(Locacao locacao) {
+        this.locacao = locacao;
+    }
 }
