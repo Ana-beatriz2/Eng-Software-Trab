@@ -28,7 +28,7 @@ public class Locacao {
     private Motorista motorista;
 
     @ManyToOne
-    @JoinColumn(name = "usuarioId", nullable = false) //unique = false (é o padrão)
+    @JoinColumn(name = "usuarioId", nullable = false)
     private UsuarioCliente usuario;
 
     @ManyToOne

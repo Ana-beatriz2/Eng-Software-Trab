@@ -12,7 +12,7 @@ public class Carro{
     @Column(name = "id", unique = true)
     private Long id;
 
-    @Column(name = "marca", nullable = true, unique = true)
+    @Column(name = "marca", nullable = true)
     private String marca;
 
     @Column(name = "ano", nullable = false)
@@ -30,8 +30,8 @@ public class Carro{
     @Column(name = "tipoCombustivel", nullable = true)
     private String tipoCombustivel;
 
-    @Column(name = "statusCarro", nullable = true)
-    private String statusCarro;
+    @Column(name = "statusCarro")
+    private int statusCarro;
 
     @Column(name = "quilometragem", nullable = true, unique = true)
     private int quilometragem;
@@ -39,7 +39,7 @@ public class Carro{
     public Carro(){
     }
 
-    public Carro(Long id, String marca, int ano, String placa, String Modelo, String cor, String tipoCombustivel, String statusCarro, int quilometragem){
+    public Carro(Long id, String marca, int ano, String placa, String modelo, String cor, String tipoCombustivel, int statusCarro, int quilometragem){
         this.id = id;
         this.marca = marca;
         this.ano = ano;
@@ -78,9 +78,9 @@ public class Carro{
 
     public void setTipoCombustivel(String tipoCombustivel) { this.tipoCombustivel = tipoCombustivel; }
 
-    public String getStatusCarro() { return statusCarro; }
+    public int getStatusCarro() { return statusCarro; }
 
-    public void setStatusCarro(String statusCarro) { this.statusCarro = statusCarro; }
+    public void setStatusCarro(int statusCarro) { this.statusCarro = statusCarro; }
 
     public int getQuilometragem() { return quilometragem; }
 

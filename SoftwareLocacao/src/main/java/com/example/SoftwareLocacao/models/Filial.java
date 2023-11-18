@@ -3,7 +3,7 @@ package com.example.SoftwareLocacao.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = Devolucao.TABLE_NAME)
+@Table(name = Filial.TABLE_NAME)
 public class Filial{
     public static final String TABLE_NAME = "filial";
 
@@ -26,6 +26,7 @@ public class Filial{
 
     public Filial(Long id, String endereco, String cnpj, String cep){
        this.id = id;
+       this.endereco = endereco;
        this.cnpj = cnpj;
        this.cep = cep;
     }
