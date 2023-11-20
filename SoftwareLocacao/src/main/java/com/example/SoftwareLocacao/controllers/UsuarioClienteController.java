@@ -30,7 +30,7 @@ public class UsuarioClienteController {
 
     @PostMapping
     public ResponseEntity<String> createUsuario(@RequestBody UsuarioCliente obj){
-        try{
+        /*try{
             this.usuarioClienteService.create(obj);
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").
                     buildAndExpand(obj.getId()).toUri();
@@ -38,7 +38,12 @@ public class UsuarioClienteController {
         } catch (Exception ex){
             String errorMessage = "Erro ao cadastrar cliente: " + ex.getMessage();
             return ResponseEntity.badRequest().body(errorMessage);
-        }
+        }*/
+        this.usuarioClienteService.create(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").
+                buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+
     }
 
     @PutMapping("/{id}")
