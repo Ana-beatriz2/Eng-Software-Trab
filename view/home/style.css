@@ -2,6 +2,7 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    display: block;
 }
 
 header {
@@ -38,14 +39,20 @@ nav a {
     justify-content: space-around;
     padding: 2em;
     background-color: #fff;
+    margin-top: 20px; /* Adiciona uma margem no topo para separar das seções acima */
+    margin-bottom: 100px; /* Adiciona uma margem na base para separar das seções abaixo */
 }
 
 .feature {
     text-align: center;
+    flex: 1; /* Distribui igualmente o espaço entre as divs dentro da section */
+    margin: 0 10px; /* Adiciona uma margem horizontal para separar as divs */
 }
 
 .feature img {
-    width: 80px;
+    width: 240px;
+    margin-bottom: 10px; /* Adiciona uma margem inferior para separar as imagens */
+    border-radius: 10px;
 }
 
 footer {
