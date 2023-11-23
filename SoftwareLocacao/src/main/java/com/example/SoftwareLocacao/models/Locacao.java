@@ -1,8 +1,6 @@
 package com.example.SoftwareLocacao.models;
 
 import jakarta.persistence.*;
-import com.example.SoftwareLocacao.models.UsuarioCliente;
-import com.example.SoftwareLocacao.models.Motorista;
 
 @Entity
 @Table(name = Locacao.TABLE_NAME)
@@ -20,9 +18,6 @@ public class Locacao {
     @Column(name = "dataHoraRetirada")
     private String dataHoraRetirada;
 
-    @Column(name = "retirada", length = 100, nullable = true) //filial retirada (real)
-    private String retirada;
-
     @OneToOne
     @JoinColumn(name = "motoristaId", nullable = true, unique = true)
     private Motorista motorista;
@@ -32,8 +27,8 @@ public class Locacao {
     private UsuarioCliente usuario;
 
     @ManyToOne
-    @JoinColumn(name = "carroId", nullable = false)
-    private Carro carroReservado;
+    @JoinColumn(name = "grupoId", nullable = false)
+    private Grupo grupoReservado;
 
     @ManyToOne
     @JoinColumn(name = "filialEntrega", nullable = false)
@@ -43,18 +38,22 @@ public class Locacao {
     @JoinColumn(name = "filialRetirada", nullable = false)
     private Filial filialDeRetirada;
 
+    @ManyToOne
+    @JoinColumn(name = "filialRetirada", nullable = true)
+    private Filial filialEntregaReal;
+
     public Locacao() {
     }
 
-    public Locacao(Long id, String dataHoraDevolucao, String dataHoraRetirada, String retirada, UsuarioCliente usuario, Motorista motorista, Carro carroReservado,
+    public Locacao(Long id, String dataHoraDevolucao, String dataHoraRetirada, Filial filialEntregaReal, UsuarioCliente usuario, Motorista motorista, Grupo grupoReservado,
                    Filial filialDeEntrega, Filial filialDeRetirada) {
         this.id = id;
         this.dataHoraDevolucao = dataHoraDevolucao;
         this.dataHoraRetirada = dataHoraRetirada;
-        this.retirada = retirada;
+        this.filialEntregaReal = filialEntregaReal;
         this.usuario = usuario;
         this.motorista = motorista;
-        this.carroReservado = carroReservado;
+        this.grupoReservado = grupoReservado;
         this.filialDeEntrega = filialDeEntrega;
         this.filialDeRetirada = filialDeRetirada;
     }
@@ -70,9 +69,14 @@ public class Locacao {
 
     public void setDataHoraRetirada(String dataHoraRetirada) { this.dataHoraRetirada = dataHoraRetirada; }
 
-    public String getRetirada() { return retirada; }
+    public Filial getFilialEntregaReal() {
+        return filialEntregaReal;
+    }
 
-    public void setRetirada(String retirada) { this.retirada = retirada; }
+    public void setFilialEntregaReal(Filial filialEntregaReal) {
+        this.filialEntregaReal = filialEntregaReal;
+    }
+
     public Motorista getMotorista() {
         return motorista;
     }
@@ -88,12 +92,12 @@ public class Locacao {
         this.usuario = usuario;
     }
 
-    public Carro getCarroReservado() {
-        return carroReservado;
+    public Grupo getGrupoReservado() {
+        return grupoReservado;
     }
 
-    public void setCarroReservado(Carro carroReservado) {
-        this.carroReservado = carroReservado;
+    public void setGrupoReservado(Grupo carroReservado) {
+        this.grupoReservado = grupoReservado;
     }
 
     public Filial getFilialDeEntrega() {
