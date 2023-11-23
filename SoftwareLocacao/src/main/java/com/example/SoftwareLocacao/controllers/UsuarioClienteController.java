@@ -2,6 +2,7 @@ package com.example.SoftwareLocacao.controllers;
 
 import com.example.SoftwareLocacao.models.UsuarioCliente;
 import com.example.SoftwareLocacao.services.UsuarioClienteService;
+import com.example.SoftwareLocacao.services.exceptions.DataIntegrityViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,19 +31,19 @@ public class UsuarioClienteController {
 
     @PostMapping
     public ResponseEntity<String> createUsuario(@RequestBody UsuarioCliente obj){
-        /*try{
+        try{
             this.usuarioClienteService.create(obj);
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").
                     buildAndExpand(obj.getId()).toUri();
             return ResponseEntity.created(uri).build();
         } catch (Exception ex){
             String errorMessage = "Erro ao cadastrar cliente: " + ex.getMessage();
-            return ResponseEntity.badRequest().body(errorMessage);
-        }*/
-        this.usuarioClienteService.create(obj);
+            throw new DataIntegrityViolationException(errorMessage);
+        }
+        /*this.usuarioClienteService.create(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").
                 buildAndExpand(obj.getId()).toUri();
-        return ResponseEntity.created(uri).build();
+        return ResponseEntity.created(uri).build();*/
 
     }
 

@@ -1,5 +1,6 @@
 package configExceptions;
 
+import com.example.SoftwareLocacao.services.exceptions.ObjectNotFoundException;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -15,6 +16,8 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import javax.validation.ConstraintViolationException;
+
+
 
 // Classe que de fato vai receber os erros e tratar
 
@@ -84,6 +87,18 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 dataIntegrityViolationException,
                 errorMessage,
                 HttpStatus.CONFLICT,
+                request);
+    }
+
+    @ExceptionHandler(ObjectNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<Object> handleObjectNotFoundException(
+            ObjectNotFoundException objectNotFoundException,
+            WebRequest request) {
+        //log.error("Failed to find the requested element", objectNotFoundException);
+        return buildErrorResponse(
+                objectNotFoundException,
+                HttpStatus.NOT_FOUND,
                 request);
     }
 

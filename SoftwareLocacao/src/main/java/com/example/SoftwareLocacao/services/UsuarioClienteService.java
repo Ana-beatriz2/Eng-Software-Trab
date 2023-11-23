@@ -2,6 +2,7 @@ package com.example.SoftwareLocacao.services;
 
 import com.example.SoftwareLocacao.models.UsuarioCliente;
 import com.example.SoftwareLocacao.repositories.UsuarioClienteRepository;
+import com.example.SoftwareLocacao.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,14 +17,14 @@ public class UsuarioClienteService {
 
     public UsuarioCliente findById(Long id){
         Optional<UsuarioCliente> usuarioCliente = this.usuarioClienteRepository.findById(id);
-        return usuarioCliente.orElseThrow( () -> new RuntimeException(
+        return usuarioCliente.orElseThrow( () -> new ObjectNotFoundException(
                 "Usuário não encontrado! id: " + id + ", Tipo: " + UsuarioCliente.class.getName()
         ));
     }
 
     public UsuarioCliente findClienteByName(String name){
         Optional<UsuarioCliente> usuarioCliente = Optional.ofNullable(this.usuarioClienteRepository.findByNome(name));
-        return usuarioCliente.orElseThrow( () -> new RuntimeException(
+        return usuarioCliente.orElseThrow( () -> new ObjectNotFoundException(
                 "Usuário não encontrado! Nome: " + name + ", Tipo: " + UsuarioCliente.class.getName()
         ));
     }
@@ -34,6 +35,8 @@ public class UsuarioClienteService {
         obj.setPontosProgFidelidade(0);
         obj = this.usuarioClienteRepository.save(obj);
         return obj;
+
+        //DataIntegrityViolationException
     }
     @Transactional
     public UsuarioCliente update(UsuarioCliente obj) {

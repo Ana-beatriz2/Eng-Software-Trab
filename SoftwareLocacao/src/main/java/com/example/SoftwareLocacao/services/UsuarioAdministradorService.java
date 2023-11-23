@@ -2,6 +2,7 @@ package com.example.SoftwareLocacao.services;
 
 import com.example.SoftwareLocacao.models.UsuarioAdministrador;
 import com.example.SoftwareLocacao.repositories.UsuarioAdministradorRepository;
+import com.example.SoftwareLocacao.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +17,7 @@ public class UsuarioAdministradorService {
 
     public UsuarioAdministrador findById(Long id){
         Optional<UsuarioAdministrador> usuarioAdministrador = this.usuarioAdmRepository.findById(id);
-        return usuarioAdministrador.orElseThrow( () -> new RuntimeException(
+        return usuarioAdministrador.orElseThrow( () -> new ObjectNotFoundException(
            "Usuário não encontrado! id: " + id + ", Tipo: " + UsuarioAdministrador.class.getName()
         ));
     }

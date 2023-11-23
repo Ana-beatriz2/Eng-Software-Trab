@@ -1,8 +1,8 @@
 package com.example.SoftwareLocacao.services;
 
 import com.example.SoftwareLocacao.models.Motorista;
-import com.example.SoftwareLocacao.models.UsuarioAdministrador;
 import com.example.SoftwareLocacao.repositories.MotoristaRepository;
+import com.example.SoftwareLocacao.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +17,7 @@ public class MotoristaService {
 
     public Motorista findMotoristaById(Long id){
         Optional<Motorista> motorista = this.motoristaRepository.findById(id);
-        return motorista.orElseThrow( () -> new RuntimeException(
+        return motorista.orElseThrow( () -> new ObjectNotFoundException(
                 "Motorista não encontrado! id: " + id + ", Tipo: " + Motorista.class.getName()
         ));
     }
