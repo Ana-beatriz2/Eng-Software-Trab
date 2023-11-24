@@ -12,7 +12,7 @@ public class Motorista {
     @Column(name = "id", unique = true)
     private Long id;
 
-    @Column(name = "cnh", nullable = true, unique = true)
+    @Column(name = "cnh", nullable = false, unique = true)
     private String cnh;
 
     @Column(name = "nome", length = 100, nullable = false, unique = true)
@@ -21,7 +21,7 @@ public class Motorista {
     @Column(name = "datNascimento", length = 50, nullable = false)
     private String dtNascimento;
 
-    @Column(name = "cpf", nullable = true, unique = true)
+    @Column(name = "cpf", nullable = false, unique = true)
     private String cpf;
 
     @Column(name = "email", nullable = false, unique = true)

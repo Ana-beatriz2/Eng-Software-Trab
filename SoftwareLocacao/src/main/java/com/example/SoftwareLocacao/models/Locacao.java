@@ -1,8 +1,6 @@
 package com.example.SoftwareLocacao.models;
 
 import jakarta.persistence.*;
-import com.example.SoftwareLocacao.models.UsuarioCliente;
-import com.example.SoftwareLocacao.models.Motorista;
 
 @Entity
 @Table(name = Locacao.TABLE_NAME)
@@ -14,17 +12,17 @@ public class Locacao {
     @Column(name = "id", unique = true)
     private Long id;
 
-    @Column(name = "dataHoraDevolucao")
+    @Column(name = "dataHoraDevolucao", nullable = false)
     private String dataHoraDevolucao;
 
-    @Column(name = "dataHoraRetirada")
+    @Column(name = "dataHoraRetirada", nullable = false)
     private String dataHoraRetirada;
 
     @Column(name = "retirada", length = 100, nullable = true) //filial retirada (real)
     private String retirada;
 
     @OneToOne
-    @JoinColumn(name = "motoristaId", nullable = true, unique = true)
+    @JoinColumn(name = "motoristaId", nullable = true)
     private Motorista motorista;
 
     @ManyToOne

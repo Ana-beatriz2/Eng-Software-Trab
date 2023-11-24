@@ -2,6 +2,7 @@ package com.example.SoftwareLocacao.services;
 
 import com.example.SoftwareLocacao.models.Motorista;
 import com.example.SoftwareLocacao.repositories.MotoristaRepository;
+import com.example.SoftwareLocacao.services.exceptions.DataIntegrityViolationException;
 import com.example.SoftwareLocacao.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,38 @@ public class MotoristaService {
 
     @Transactional
     public Motorista createMotorista(Motorista obj){
+
+        Motorista motoristaNome = this.motoristaRepository.findByNome(obj.getNome());
+        Motorista motoristaEmail = this.motoristaRepository.findByEmail(obj.getEmail());
+        Motorista motoristaCpf = this.motoristaRepository.findByCpf(obj.getCpf());
+        Motorista motoristaAds = this.motoristaRepository.findByAds(obj.getAds());
+        Motorista motoristaCnh = this.motoristaRepository.findByCnh(obj.getCnh());
+
+        if (motoristaNome != null){
+            throw new DataIntegrityViolationException("Já existe um usuário com esse nome!");
+        }
+
+        if (motoristaEmail != null){
+            throw new DataIntegrityViolationException("Já existe um usuário com esse email!");
+        }
+
+        if (motoristaCpf != null){
+            throw new DataIntegrityViolationException("Já existe um usuário com esse Cpf!");
+        }
+
+        if (motoristaAds != null){
+            throw new DataIntegrityViolationException("Já existe um usuário com esse Ads!");
+        }
+
+        if (motoristaCnh != null){
+            throw new DataIntegrityViolationException("Já existe um usuário com essa Cnh!");
+        }
+
+        if (obj.getNome() == null || obj.getEmail() == null || obj.getCpf() == null || obj.getAds() == null ||
+                obj.getDtNascimento() == null){
+            throw new DataIntegrityViolationException("Campos obrigatórios não foram preenchidos!");
+        }
+
         obj.setId(null);
         obj = this.motoristaRepository.save(obj);
         return obj;
