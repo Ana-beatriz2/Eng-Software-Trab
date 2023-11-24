@@ -27,10 +27,6 @@ public class Locacao {
     private UsuarioCliente usuario;
 
     @ManyToOne
-    @JoinColumn(name = "grupoId", nullable = false)
-    private Grupo grupoReservado;
-
-    @ManyToOne
     @JoinColumn(name = "filialEntrega", nullable = false)
     private Filial filialDeEntrega;
 
@@ -39,13 +35,17 @@ public class Locacao {
     private Filial filialDeRetirada;
 
     @ManyToOne
-    @JoinColumn(name = "filialRetirada", nullable = true)
+    @JoinColumn(name = "filialEntregaReal", nullable = true)
     private Filial filialEntregaReal;
+
+    @ManyToOne
+    @JoinColumn(name = "grupoId", nullable = false)
+    private Grupo grupo;
 
     public Locacao() {
     }
 
-    public Locacao(Long id, String dataHoraDevolucao, String dataHoraRetirada, Filial filialEntregaReal, UsuarioCliente usuario, Motorista motorista, Grupo grupoReservado,
+    public Locacao(Long id, String dataHoraDevolucao, String dataHoraRetirada, Filial filialEntregaReal, UsuarioCliente usuario, Motorista motorista, Grupo grupo,
                    Filial filialDeEntrega, Filial filialDeRetirada) {
         this.id = id;
         this.dataHoraDevolucao = dataHoraDevolucao;
@@ -53,7 +53,7 @@ public class Locacao {
         this.filialEntregaReal = filialEntregaReal;
         this.usuario = usuario;
         this.motorista = motorista;
-        this.grupoReservado = grupoReservado;
+        this.grupo = grupo;
         this.filialDeEntrega = filialDeEntrega;
         this.filialDeRetirada = filialDeRetirada;
     }
@@ -92,12 +92,12 @@ public class Locacao {
         this.usuario = usuario;
     }
 
-    public Grupo getGrupoReservado() {
-        return grupoReservado;
+    public Grupo getGrupo() {
+        return grupo;
     }
 
-    public void setGrupoReservado(Grupo carroReservado) {
-        this.grupoReservado = grupoReservado;
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
     }
 
     public Filial getFilialDeEntrega() {

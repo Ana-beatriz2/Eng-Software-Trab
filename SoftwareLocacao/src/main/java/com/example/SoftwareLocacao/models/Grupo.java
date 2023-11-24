@@ -12,17 +12,17 @@ public class Grupo {
     @Column(name = "id", unique = true)
     private Long id;
 
-    @Column(name = "classificação", nullable = false, unique = true)
-    private String classificação;
+    @Column(name = "classificacao", nullable = false, unique = true)
+    private String classificacao;
 
     @Column(name = "valorGrupo", nullable = false)
     private float valorGrupo;
 
     public Grupo() {
     }
-    public Grupo(Long id, String classificação, float valorGrupo) {
+    public Grupo(Long id, String classificacao, float valorGrupo) {
         this.id = id;
-        this.classificação = classificação;
+        this.classificacao = classificacao;
         this.valorGrupo = valorGrupo;
     }
 
@@ -34,12 +34,12 @@ public class Grupo {
         this.id = id;
     }
 
-    public String getClassificação() {
-        return classificação;
+    public String getClassificacao() {
+        return classificacao;
     }
 
-    public void setClassificação(String classificação) {
-        this.classificação = classificação;
+    public void setClassificacao(String classificacaoo) {
+        this.classificacao = classificacao;
     }
 
     public float getValorGrupo() {

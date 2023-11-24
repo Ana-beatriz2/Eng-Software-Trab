@@ -2,8 +2,6 @@ package com.example.SoftwareLocacao.services;
 
 
 import com.example.SoftwareLocacao.models.Locacao;
-import com.example.SoftwareLocacao.models.UsuarioAdministrador;
-import com.example.SoftwareLocacao.models.Motorista;
 import com.example.SoftwareLocacao.models.UsuarioCliente;
 import com.example.SoftwareLocacao.repositories.LocacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +39,6 @@ public class LocacaoService {
         Locacao newObj = findLocacaoById(obj.getId());
         newObj.setDataHoraDevolucao(obj.getDataHoraDevolucao());
         newObj.setDataHoraRetirada(obj.getDataHoraRetirada());
-        newObj.setRetirada(obj.getRetirada());
         return this.locacaoRepository.save(newObj);
     }
 
