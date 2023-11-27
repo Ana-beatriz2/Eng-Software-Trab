@@ -2,11 +2,10 @@ package com.example.SoftwareLocacao.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import com.example.SoftwareLocacao.models.Locacao;
 
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = UsuarioCliente.TABLE_NAME)

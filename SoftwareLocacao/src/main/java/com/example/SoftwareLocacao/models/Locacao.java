@@ -12,14 +12,14 @@ public class Locacao {
     @Column(name = "id", unique = true)
     private Long id;
 
-    @Column(name = "dataHoraDevolucao")
+    @Column(name = "dataHoraDevolucao", nullable = false)
     private String dataHoraDevolucao;
 
-    @Column(name = "dataHoraRetirada")
+    @Column(name = "dataHoraRetirada", nullable = false)
     private String dataHoraRetirada;
 
     @OneToOne
-    @JoinColumn(name = "motoristaId", nullable = true, unique = true)
+    @JoinColumn(name = "motoristaId", nullable = true)
     private Motorista motorista;
 
     @ManyToOne
