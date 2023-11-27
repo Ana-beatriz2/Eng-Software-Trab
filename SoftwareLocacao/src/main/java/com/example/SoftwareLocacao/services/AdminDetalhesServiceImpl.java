@@ -1,5 +1,6 @@
 package com.example.SoftwareLocacao.services;
 
+import com.example.SoftwareLocacao.models.ProfileEnum;
 import com.example.SoftwareLocacao.models.UsuarioAdministrador;
 import com.example.SoftwareLocacao.security.AdminSpringSecurity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,9 +8,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import com.example.SoftwareLocacao.models.UsuarioAdministrador;
+import com.example.SoftwareLocacao.repositories.UsuarioAdministradorRepository;
+import com.example.SoftwareLocacao.security.AdminSpringSecurity;
+
 import java.util.Objects;
 
-public class DetalhesAdminService implements UserDetailsService {
+public class AdminDetalhesServiceImpl implements UserDetailsService {
 
     @Autowired
     private UsuarioAdministrador usuarioAdmin;
