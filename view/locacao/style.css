@@ -1,23 +1,27 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
+    background-color: #fff;
+    margin: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    overflow-y: auto;
+    height: 300vh;
+    overflow-y: hidden;
+    flex-direction: column;
 }
 
 .payment-container {
     background-color: #fff;
-    padding: 20px;
+    padding-left: 20px;
+    padding-right: 60px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     width: 100%;
     text-align: center;
-    overflow-y: auto;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    
 }
 
 label {
