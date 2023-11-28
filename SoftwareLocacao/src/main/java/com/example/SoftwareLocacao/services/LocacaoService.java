@@ -1,7 +1,9 @@
 package com.example.SoftwareLocacao.services;
 
 
+import com.example.SoftwareLocacao.models.Grupo;
 import com.example.SoftwareLocacao.models.Locacao;
+import com.example.SoftwareLocacao.models.Motorista;
 import com.example.SoftwareLocacao.models.UsuarioCliente;
 import com.example.SoftwareLocacao.pdfDocument.Document;
 import com.example.SoftwareLocacao.repositories.LocacaoRepository;
@@ -22,6 +24,12 @@ public class LocacaoService {
     @Autowired
     private UsuarioClienteService usuarioClienteService;
 
+    @Autowired
+    private MotoristaService motoristaService;
+
+    @Autowired
+    private GrupoService grupoService;
+
     public Locacao findLocacaoById(Long id){
         Optional<Locacao> locacao = this.locacaoRepository.findById(id);
         return locacao.orElseThrow( () -> new ObjectNotFoundException(
@@ -31,6 +39,7 @@ public class LocacaoService {
 
     @Transactional
     public Locacao createLocacao(Locacao obj){
+        String nomeMotorista;
 
         if (obj.getDataHoraDevolucao() == null || obj.getDataHoraRetirada() == null){
             throw new DataIntegrityViolationException("Campos obrigatórios não foram preenchidos!");
@@ -38,9 +47,21 @@ public class LocacaoService {
 
         obj.setId(null);
         UsuarioCliente usuario = this.usuarioClienteService.findById(obj.getUsuario().getId());
+        Grupo grupo = this.grupoService.findGrupoById(obj.getGrupo().getId());
+
+        if (obj.getMotorista() != null){
+            Motorista motorista = this.motoristaService.findMotoristaById(obj.getMotorista().getId());
+            nomeMotorista = motorista.getNome();
+        }
+        else{
+            nomeMotorista = usuario.getNome();
+        }
+
         obj.setUsuario(usuario);
         obj = this.locacaoRepository.save(obj);
-        new Document(usuario.getNome(), obj.getDataHoraRetirada(), obj.getDataHoraDevolucao());
+
+        new Document(usuario.getNome(), obj.getDataHoraRetirada(), obj.getDataHoraDevolucao(), grupo.getClassificacao(),
+                grupo.getValorGrupo(), nomeMotorista);
         return obj;
     }
     @Transactional
