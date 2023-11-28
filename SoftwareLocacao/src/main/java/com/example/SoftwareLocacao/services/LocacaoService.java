@@ -3,6 +3,7 @@ package com.example.SoftwareLocacao.services;
 
 import com.example.SoftwareLocacao.models.Locacao;
 import com.example.SoftwareLocacao.models.UsuarioCliente;
+import com.example.SoftwareLocacao.pdfDocument.Document;
 import com.example.SoftwareLocacao.repositories.LocacaoRepository;
 import com.example.SoftwareLocacao.services.exceptions.DataIntegrityViolationException;
 import com.example.SoftwareLocacao.services.exceptions.ObjectNotFoundException;
@@ -30,15 +31,16 @@ public class LocacaoService {
 
     @Transactional
     public Locacao createLocacao(Locacao obj){
-        obj.setId(null);
-        UsuarioCliente usuario = this.usuarioClienteService.findById(obj.getUsuario().getId());
 
         if (obj.getDataHoraDevolucao() == null || obj.getDataHoraRetirada() == null){
             throw new DataIntegrityViolationException("Campos obrigatórios não foram preenchidos!");
         }
 
+        obj.setId(null);
+        UsuarioCliente usuario = this.usuarioClienteService.findById(obj.getUsuario().getId());
         obj.setUsuario(usuario);
         obj = this.locacaoRepository.save(obj);
+        new Document(usuario.getNome(), obj.getDataHoraRetirada(), obj.getDataHoraDevolucao());
         return obj;
     }
     @Transactional
