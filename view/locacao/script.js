@@ -12,7 +12,6 @@ function submitPayment() {
     } else if (paymentMethod === "pix" || paymentMethod === "cash") {
         creditCardDetails.style.display = "none";
     }
-
 }
 
 function isMotorista() {
@@ -25,4 +24,8 @@ function isMotorista() {
         driverDetails.style.display = "flex";
         alert("Favor, cadastrar o motorista!");
     }
+}
+
+function onClickPayment(){
+    alert("Pagamento registrado com sucesso!");
 }
