@@ -15,6 +15,9 @@
 
             <label for="dataFim">Data de Fim:</label>
             <input type="text" id="dataFim" name="dataFim" required>
+
+            <label for="dataPagamento">Data de Pagamento:</label>
+            <input type="text" id="dataPagamento" name="dataPagamento" required>
             
             <label for="amount">Valor do Aluguel:</label>
             <input type="text" id="amount" name="amount" required>
@@ -46,6 +49,9 @@
             <label for="billing-address">Endereço de Cobrança:</label>
             <textarea id="billing-address" name="billing-address" rows="4" required></textarea>
 
+            <label for="billing-address">Descrição de Pagamento:</label>
+            <textarea id="payment-description" name="payment-description" rows="4" required></textarea>
+
             <div id="driver-details" class="hidden">
                 <h2>Cadastro de Motorista</h2>
                 <label for="driver-name">Nome do Motorista:</label>
@@ -61,9 +67,10 @@
             </div>
 
             <button type="button" onclick="onClickPayment()">Pagar</button>
+
+            <button type="button" onclick="window.location.href='../cadastrov2_cliente/index.html'">Cadastrar Cliente</button>
         </form>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
