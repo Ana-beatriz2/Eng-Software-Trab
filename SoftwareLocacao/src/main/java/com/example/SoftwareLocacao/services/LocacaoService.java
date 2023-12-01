@@ -1,10 +1,7 @@
 package com.example.SoftwareLocacao.services;
 
 
-import com.example.SoftwareLocacao.models.Grupo;
-import com.example.SoftwareLocacao.models.Locacao;
-import com.example.SoftwareLocacao.models.Motorista;
-import com.example.SoftwareLocacao.models.UsuarioCliente;
+import com.example.SoftwareLocacao.models.*;
 import com.example.SoftwareLocacao.pdfDocument.Document;
 import com.example.SoftwareLocacao.repositories.LocacaoRepository;
 import com.example.SoftwareLocacao.services.exceptions.DataIntegrityViolationException;
@@ -28,6 +25,9 @@ public class LocacaoService {
     private MotoristaService motoristaService;
 
     @Autowired
+    private FilialService filalService;
+
+    @Autowired
     private GrupoService grupoService;
 
     public Locacao findLocacaoById(Long id){
@@ -48,6 +48,8 @@ public class LocacaoService {
         obj.setId(null);
         UsuarioCliente usuario = this.usuarioClienteService.findById(obj.getUsuario().getId());
         Grupo grupo = this.grupoService.findGrupoById(obj.getGrupo().getId());
+        Filial filialRetirada = this.filalService.findFilialById(obj.getFilialDeRetirada().getId());
+        Filial filialDevolucao = this.filalService.findFilialById(obj.getFilialDeEntrega().getId());
 
         if (obj.getMotorista() != null){
             Motorista motorista = this.motoristaService.findMotoristaById(obj.getMotorista().getId());
@@ -61,7 +63,7 @@ public class LocacaoService {
         obj = this.locacaoRepository.save(obj);
 
         new Document(usuario.getNome(), obj.getDataHoraRetirada(), obj.getDataHoraDevolucao(), grupo.getClassificacao(),
-                grupo.getValorGrupo(), nomeMotorista);
+                grupo.getValorGrupo(), nomeMotorista, obj.getValorTotal(), filialRetirada.getEndereco(), filialDevolucao.getEndereco());
         return obj;
     }
     @Transactional
