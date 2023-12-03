@@ -61,6 +61,9 @@ public class Locacao {
         this.filialDeRetirada = filialDeRetirada;
         this.valorTotal = valorTotal;
     }
+
+
+
     public Long getId() { return id; }
 
     public void setId(Long id) { this.id = id; }
