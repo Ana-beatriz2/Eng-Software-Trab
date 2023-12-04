@@ -2,8 +2,11 @@ package com.example.SoftwareLocacao.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import com.example.SoftwareLocacao.models.Locacao;
 
+import java.util.ArrayList;
 import java.util.Objects;
+import java.util.List;
 
 @Entity
 @Table(name = UsuarioCliente.TABLE_NAME)
@@ -40,6 +43,9 @@ public class UsuarioCliente {
     @Column(name = "pontosProgFidelidade")
     private int pontosProgFidelidade;
 
+    @OneToMany(mappedBy = "usuario")
+    private List<Locacao> locacoes = new ArrayList<Locacao>();
+
     public UsuarioCliente() {
     }
     public UsuarioCliente(Long id, String nome, String email, String senha, String cpf, String dtNascimento, String endereco, String cnpj, int pontosProgFidelidade, int statusMotorista) {
@@ -52,7 +58,6 @@ public class UsuarioCliente {
         this.endereco = endereco;
         this.cnpj = cnpj;
         this.pontosProgFidelidade = pontosProgFidelidade;
-
     }
 
     public Long getId() {
