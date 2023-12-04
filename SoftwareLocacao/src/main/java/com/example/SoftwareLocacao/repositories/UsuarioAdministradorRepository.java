@@ -14,5 +14,12 @@ public interface UsuarioAdministradorRepository extends JpaRepository<UsuarioAdm
 
     List<UsuarioAdministradorRepository> findByNomeContains(String nome);
 
+    UsuarioAdministrador findByNome(String nome);
+
+    UsuarioAdministrador findByEmail(String email);
+
+    UsuarioAdministrador findByCpf(String cpf);
+
+    UsuarioAdministrador findByCnpj(String cnpj);
 
 }
