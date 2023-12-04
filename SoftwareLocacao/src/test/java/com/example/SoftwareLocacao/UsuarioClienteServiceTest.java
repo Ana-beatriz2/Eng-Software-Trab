@@ -42,7 +42,7 @@ public class UsuarioClienteServiceTest {
     }
 
     @Test
-    void cadastroCampoObrigatorioFaltando(){
+    void cadastroCampoNomeFaltando(){
         var usuario = new UsuarioCliente();
         usuario.setNome("Kayky");
         usuario.setEmail("teste20@teste.com");
