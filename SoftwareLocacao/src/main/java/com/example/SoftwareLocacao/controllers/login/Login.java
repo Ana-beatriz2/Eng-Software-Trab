@@ -8,7 +8,7 @@ public class Login {
         return senha;
     }
 
-    public void setCod(String senha) {
+    public void setSenha(String senha) {
         this.senha = senha;
     }
 
