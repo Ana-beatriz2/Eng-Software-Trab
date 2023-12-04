@@ -28,10 +28,6 @@ public class PagamentoServiceTest {
     @Test
     void salvarPagamentoComSucesso(){
 
-        //Locacao locacao = this.locacaoService.findLocacaoById(2L);
-
-       // System.out.print(locacao.getId());
-
         Filial filialEntrega = new Filial();
         filialEntrega.setEndereco("Rua das couves");
         filialEntrega.setCep("123123123");
