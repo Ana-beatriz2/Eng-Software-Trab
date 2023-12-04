@@ -36,22 +36,13 @@ public class LocacaoServiceTest {
     @Mock
     private FilialService filialService;
 
-    @Mock
-    private com.example.SoftwareLocacao.pdfDocument.Document document;
-
     @Test
     void salvarLocacaoComSucesso(){
-        Filial filialEntrega = new Filial();
-        filialEntrega.setEndereco("Rua das couves");
-        filialEntrega.setCep("123123123");
-        filialEntrega.setCnpj("121111111");
-
-        Filial filialRetirada = new Filial();
-        filialEntrega.setEndereco("Rua das couves 2");
-        filialEntrega.setCep("123123128");
-        filialEntrega.setCnpj("121111191");
-
-        System.out.print(filialRetirada);
+        Filial filial = new Filial();
+        filial.setEndereco("Rua das couves");
+        filial.setCep("123123123");
+        filial.setCnpj("121111111");
+        filial.setId(1L);
 
         UsuarioCliente usuario = new UsuarioCliente();
         usuario.setNome("Joel");
@@ -60,21 +51,30 @@ public class LocacaoServiceTest {
         usuario.setEmail("teste7@teste.com");
         usuario.setCpf("12312312311");
         usuario.setDtNascimento("05/06/1999");
+        usuario.setId(1L);
 
         Grupo grupo = new Grupo();
         grupo.setClassificacao("A");
         grupo.setValorGrupo(150);
-
-        System.out.print(usuario);
+        grupo.setId(1L);
 
         Locacao locacao = new Locacao();
         locacao.setDataHoraDevolucao("29/12/2023 as 13:00");
         locacao.setDataHoraRetirada("31/12/2023 as 08:00");
-        locacao.setFilialDeEntrega(filialEntrega);
-        locacao.setFilialDeRetirada(filialRetirada);
+        locacao.setFilialDeEntrega(filial);
+        locacao.setFilialDeRetirada(filial);
         locacao.setUsuario(usuario);
         locacao.setGrupo(grupo);
         locacao.setValorTotal(400F);
+
+        UsuarioCliente usuarioMock = mock(UsuarioCliente.class);
+        when(usuarioClienteService.findById(1L)).thenReturn(usuarioMock);
+
+        Filial filialMock = mock(Filial.class);
+        when(filialService.findFilialById(1L)).thenReturn(filialMock);
+
+        Grupo grupoMock = mock(Grupo.class);
+        when(grupoService.findGrupoById(1L)).thenReturn(grupoMock);
 
         when(locacaoRepository.save(locacao)).thenReturn(locacao);
 
@@ -82,6 +82,5 @@ public class LocacaoServiceTest {
         assertEquals(locacao.getId(), locacaoSalva.getId());
 
         verify(locacaoRepository, times(1)).save(locacao);
-
     }
 }
