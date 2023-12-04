@@ -21,7 +21,7 @@ public class Carro{
     @Column(name = "placa", nullable = true, unique = true)
     private String placa;
 
-    @Column(name = "modelo", nullable = true, unique = true)
+    @Column(name = "modelo", nullable = true)
     private String modelo;
 
     @Column(name = "cor", nullable = true)
@@ -33,13 +33,17 @@ public class Carro{
     @Column(name = "statusCarro")
     private int statusCarro;
 
-    @Column(name = "quilometragem", nullable = true, unique = true)
+    @Column(name = "quilometragem", nullable = true)
     private int quilometragem;
+
+    @ManyToOne
+    @JoinColumn(name = "grupoId", nullable = false)
+    private Grupo grupo;
 
     public Carro(){
     }
 
-    public Carro(Long id, String marca, int ano, String placa, String modelo, String cor, String tipoCombustivel, int statusCarro, int quilometragem){
+    public Carro(Long id, String marca, int ano, String placa, String modelo, String cor, String tipoCombustivel, int statusCarro, int quilometragem, Grupo grupo){
         this.id = id;
         this.marca = marca;
         this.ano = ano;
@@ -49,7 +53,17 @@ public class Carro{
         this.tipoCombustivel = tipoCombustivel;
         this.statusCarro = statusCarro;
         this.quilometragem = quilometragem;
+        this.grupo = grupo;
     }
+
+    public Grupo getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
+    }
+
     public Long getId() { return id; }
 
     public void setId(Long id) { this.id = id;}
