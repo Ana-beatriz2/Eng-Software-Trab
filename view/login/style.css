@@ -40,6 +40,7 @@ body{
     color: #ffffff;
     align-items: center;
     z-index: 3;
+    margin-top: 120px;;
 }
 .logo{
     width: 156px;
