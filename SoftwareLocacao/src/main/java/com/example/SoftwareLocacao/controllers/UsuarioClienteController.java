@@ -35,7 +35,7 @@ public class UsuarioClienteController {
             this.usuarioClienteService.create(obj);
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").
                     buildAndExpand(obj.getId()).toUri();
-            return ResponseEntity.created(uri).build();
+            return ResponseEntity.created(uri).body("Usuário cadastrado com sucesso");
         } catch (Exception ex){
             String errorMessage = "Erro ao cadastrar cliente: " + ex.getMessage();
             throw new DataIntegrityViolationException(errorMessage);
