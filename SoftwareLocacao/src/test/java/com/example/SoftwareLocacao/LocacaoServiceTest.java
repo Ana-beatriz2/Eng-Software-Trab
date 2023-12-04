@@ -36,8 +36,11 @@ public class LocacaoServiceTest {
     @Mock
     private FilialService filialService;
 
+    @Mock
+    private com.example.SoftwareLocacao.pdfDocument.Document document;
+
     @Test
-    void salvarPagamentoComSucesso(){
+    void salvarLocacaoComSucesso(){
         Filial filialEntrega = new Filial();
         filialEntrega.setEndereco("Rua das couves");
         filialEntrega.setCep("123123123");
@@ -51,7 +54,6 @@ public class LocacaoServiceTest {
         System.out.print(filialRetirada);
 
         UsuarioCliente usuario = new UsuarioCliente();
-        usuario.setId(3L);
         usuario.setNome("Joel");
         usuario.setSenha("123123");
         usuario.setEndereco( "Rua Roberto da Silva, 8");
@@ -59,11 +61,11 @@ public class LocacaoServiceTest {
         usuario.setCpf("12312312311");
         usuario.setDtNascimento("05/06/1999");
 
-        System.out.print(usuario);
-
         Grupo grupo = new Grupo();
         grupo.setClassificacao("A");
         grupo.setValorGrupo(150);
+
+        System.out.print(usuario);
 
         Locacao locacao = new Locacao();
         locacao.setDataHoraDevolucao("29/12/2023 as 13:00");
