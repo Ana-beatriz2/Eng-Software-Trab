@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -37,6 +38,9 @@ public class LocacaoService {
         ));
     }
 
+    public List<Locacao> findAllLocacoes(){
+        return locacaoRepository.findAll();
+    }
     @Transactional
     public Locacao createLocacao(Locacao obj){
         String nomeMotorista;

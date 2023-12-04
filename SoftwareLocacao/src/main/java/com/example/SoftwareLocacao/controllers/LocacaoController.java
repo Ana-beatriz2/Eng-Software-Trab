@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/locacao")
@@ -20,6 +21,11 @@ public class LocacaoController {
     public ResponseEntity<Locacao> findLocacaoById(@PathVariable Long id){
         Locacao locacao = this.locacaoService.findLocacaoById(id);
         return ResponseEntity.ok().body(locacao);
+    }
+
+    @GetMapping()
+    public List<Locacao> findAll(){
+        return this.locacaoService.findAllLocacoes();
     }
 
     @PostMapping

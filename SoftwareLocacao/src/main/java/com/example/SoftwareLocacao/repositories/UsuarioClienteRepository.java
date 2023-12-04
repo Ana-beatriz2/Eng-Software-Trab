@@ -4,6 +4,8 @@ import com.example.SoftwareLocacao.models.UsuarioCliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface UsuarioClienteRepository extends JpaRepository<UsuarioCliente, Long> {
     
@@ -14,5 +16,7 @@ public interface UsuarioClienteRepository extends JpaRepository<UsuarioCliente, 
     UsuarioCliente findByCpf(String cpf);
 
     UsuarioCliente findByCnpj(String cnpj);
+
+    List<UsuarioCliente> findAll();
 
 }
