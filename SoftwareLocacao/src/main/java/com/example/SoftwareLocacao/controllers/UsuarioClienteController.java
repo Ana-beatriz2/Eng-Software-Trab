@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/usuarioCliente")
@@ -29,13 +30,18 @@ public class UsuarioClienteController {
         return ResponseEntity.ok().body(usuario);
     }
 
+    @GetMapping()
+    public List<UsuarioCliente> findAll(){
+        return this.usuarioClienteService.findAllClientes();
+    }
+
     @PostMapping
     public ResponseEntity<String> createUsuario(@RequestBody UsuarioCliente obj){
         try{
             this.usuarioClienteService.create(obj);
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").
                     buildAndExpand(obj.getId()).toUri();
-            return ResponseEntity.created(uri).build();
+            return ResponseEntity.created(uri).body("Usuário cadastrado com sucesso");
         } catch (Exception ex){
             String errorMessage = "Erro ao cadastrar cliente: " + ex.getMessage();
             throw new DataIntegrityViolationException(errorMessage);

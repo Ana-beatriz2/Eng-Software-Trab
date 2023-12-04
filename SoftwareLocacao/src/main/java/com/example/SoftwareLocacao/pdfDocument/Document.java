@@ -11,7 +11,8 @@ import java.io.FileOutputStream;
 import java.util.Random;
 
 public class Document {
-    public Document(String nomeComprador, String dataRetirada, String dataDevolucao, String grupoCarro, float valor, String nomeMotorista){
+    public Document(String nomeComprador, String dataRetirada, String dataDevolucao, String grupoCarro, float valor,
+                    String nomeMotorista, float valorTotal, String filialRetirda, String filialDevolucao){
         com.lowagie.text.Document document = new com.lowagie.text.Document();
 
         String identificador = GeradorNumeros();
@@ -55,6 +56,16 @@ public class Document {
             document.add(paragrafoDataDevolucao);
             document.add(new Paragraph(" "));
 
+            Paragraph paragrafoFilialRetirada = new Paragraph("Filial de retirada: " + filialRetirda);
+
+            document.add(paragrafoFilialRetirada);
+            document.add(new Paragraph(" "));
+
+            Paragraph paragrafoFilialDevolucao= new Paragraph("Filial de retirada: " + filialDevolucao);
+
+            document.add(paragrafoFilialDevolucao);
+            document.add(new Paragraph(" "));
+
             Paragraph paragrafoDataGrupo = new Paragraph("Grupo do carro: " + grupoCarro);
 
             document.add(paragrafoDataGrupo);
@@ -63,7 +74,12 @@ public class Document {
             Paragraph paragrafoValor = new Paragraph("Valor por dia da locação: " + valor);
 
             document.add(paragrafoValor);
-            //document.add(new Paragraph(" "));
+            document.add(new Paragraph(" "));
+
+            Paragraph paragrafoValorTotal = new Paragraph("Valor total da locação: " + valorTotal);
+
+            document.add(paragrafoValorTotal);
+            document.add(new Paragraph(" "));
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

@@ -100,4 +100,5 @@ public class UsuarioAdministradorService {
             throw new RuntimeException("Não é possível excluir pois há entidades relacionadas!");
         }
     }
+
 }
