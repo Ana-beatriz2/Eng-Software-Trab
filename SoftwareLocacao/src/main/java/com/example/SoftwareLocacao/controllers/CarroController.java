@@ -10,7 +10,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
     @RestController
-    @RequestMapping("/Carro")
+    @RequestMapping("/carro")
     public class CarroController {
 
         @Autowired
@@ -25,7 +25,7 @@ import java.net.URI;
         @PostMapping
         public ResponseEntity<String> createCarro(@RequestBody Carro obj){
             try{
-                this.carroService.create(obj);
+                this.carroService.createCarro(obj);
                 URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").
                         buildAndExpand(obj.getId()).toUri();
                 return ResponseEntity.created(uri).build();
@@ -51,7 +51,7 @@ import java.net.URI;
         @DeleteMapping("/{id}")
         public ResponseEntity<String> deleteCarro(@PathVariable Long id){
             try{
-                this.carroService.deletarCarro(id);
+                this.carroService.deleteCarro(id);
                 return ResponseEntity.noContent().build();
             } catch(Exception ex){
                 String errorMessage = "Erro ao deletar carro: " + ex.getMessage();
